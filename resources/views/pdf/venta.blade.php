@@ -163,7 +163,7 @@
                     <tbody>
                         <tr>
                             <td>{{$v->usuario}}</td>
-                            <td>{{$v->created_at}}</td>
+                            <td>{{$v->fecha_hora}}</td>
                             <td>{{$v->vendedor}}</td>
                         </tr>
                     </tbody>

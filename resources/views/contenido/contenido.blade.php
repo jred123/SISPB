@@ -63,6 +63,9 @@
             <template v-if="menu==15">
                 <transferencia></transferencia>
             </template>
+            <template v-if="menu==20">
+                <reportes></reportes>
+            </template>
 
             @elseif (Auth::user()->idrol == 2)
             <template v-if="menu==13">

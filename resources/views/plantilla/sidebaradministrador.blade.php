@@ -47,6 +47,9 @@
                             <li @click="menu=6" class="nav-item">
                                 <a class="nav-link" href="#"><i class="icon-notebook"></i> Clientes</a>
                             </li>
+                            <li @click="menu=20" class="nav-item">
+                                <a class="nav-link" href="#"><i class="icon-notebook"></i> Ventas Detalladas Reportes</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item nav-dropdown">

@@ -10,7 +10,7 @@ use App\DetalleVenta;
 use App\User;
 use App\Notifications\NotifyAdmin;
  
-class VentaController extends Controller
+class ReportesController extends Controller
 {
     public function index(Request $request)
     {
@@ -22,10 +22,12 @@ class VentaController extends Controller
         if ($buscar==''){
             $ventas = Venta::join('personas','ventas.idcliente','=','personas.id')
             ->join('users','ventas.idusuario','=','users.id')
+            ->join('detalle_ventas','ventas.id','=','detalle_ventas.idventa')
+            ->join('articulos','detalle_ventas.idarticulo','=','articulos.id')
             ->select('ventas.id','ventas.tipo_comprobante','ventas.serie_comprobante',
             'ventas.num_comprobante','ventas.fecha_hora','ventas.vendedor','ventas.impuesto','ventas.total',
-            'ventas.estado','personas.nombre','personas.num_documento','users.usuario')
-            ->orderBy('ventas.id', 'desc')->paginate(3);
+            'ventas.estado','personas.nombre','personas.num_documento','users.usuario','articulos.nombre as articulo','articulos.codigo','articulos.precio_compra','articulos.precio_venta')
+            ->orderBy('ventas.id', 'desc')->paginate(20);
         }
         else{
             $ventas = Venta::join('personas','ventas.idcliente','=','personas.id')
@@ -34,7 +36,7 @@ class VentaController extends Controller
             'ventas.num_comprobante','ventas.fecha_hora','ventas.vendedor','ventas.impuesto','ventas.total',
             'ventas.estado','personas.nombre','users.usuario')
             ->where('ventas.'.$criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('ventas.id', 'desc')->paginate(3);
+            ->orderBy('ventas.id', 'desc')->paginate(20);
         }
          
         return [
