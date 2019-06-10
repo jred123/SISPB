@@ -24,6 +24,7 @@ class CreatePersonasTable extends Migration
             $table->timestamps();
         });
         DB::table('personas')->insert(array('id'=>'1','nombre'=>'Pablo', 'tipo_documento'=>'DNI','num_documento'=>'72154871'));
+        DB::table('personas')->insert(array('id'=>'2','nombre'=>'Paola Leaño', 'tipo_documento'=>'DNI','num_documento'=>'13476584 CBA'));
     }
 
     /**

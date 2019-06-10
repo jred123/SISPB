@@ -124,7 +124,7 @@
                                 <label for="">Impuesto(*)</label>
                                 <input type="text" class="form-control" v-model="impuesto">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Tipo Comprobante(*)</label>
                                     <select class="form-control" v-model="tipo_comprobante">
@@ -135,16 +135,22 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Serie Comprobante</label>
                                     <input type="text" class="form-control" v-model="serie_comprobante" placeholder="000x">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Número Comprobante(*)</label>
                                     <input type="text" class="form-control" v-model="num_comprobante" placeholder="000xx">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Fecha de Venta</label>
+                                    <input type="date" class="form-control" v-model="fechav">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -640,6 +646,7 @@
                 idcliente:0,
                 cliente:'',
                 estado:0,
+                fechav:'2019-01-01',
                 tipo_comprobante : 'BOLETA',
                 serie_comprobante : '',
                 num_comprobante : '',
@@ -1125,6 +1132,7 @@
                     'tipo_comprobante': this.tipo_comprobante,
                     'serie_comprobante' : this.serie_comprobante,
                     'num_comprobante' : this.num_comprobante,
+                    'fechav' : this.fechav,
                     'impuesto' : this.impuesto,
                     'vendedor' : this.vendedor,
                     'total' : this.total,
@@ -1137,6 +1145,7 @@
                     me.tipo_comprobante='BOLETA';
                     me.serie_comprobante='';
                     me.num_comprobante='';
+                    me.fechav='2019-01-01';
                     me.impuesto=0.16;
                     me.vendedor='';
                     me.total=0.0;

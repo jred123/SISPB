@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             //$table->timestamps();
         });
         DB::table('users')->insert(array('id'=>'1','usuario'=>'admin', 'password'=>bcrypt('admin'), 'sucursal'=>'Central', 'idrol'=>'1'));
+        DB::table('users')->insert(array('id'=>'2','usuario'=>'paola.l', 'password'=>bcrypt('paola'), 'sucursal'=>'Ic Norte', 'idrol'=>'4'));
     }
 
     /**

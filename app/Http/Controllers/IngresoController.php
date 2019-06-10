@@ -123,7 +123,7 @@ class IngresoController extends Controller
             $ingreso->tipo_comprobante = $request->tipo_comprobante;
             $ingreso->serie_comprobante = $request->serie_comprobante;
             $ingreso->num_comprobante = $request->num_comprobante;
-            $ingreso->fecha_hora = $mytime->toDateTimeString();
+            $ingreso->fecha_hora = $request->fechai;
             $ingreso->impuesto = $request->impuesto;
             $ingreso->moneda = $request->moneda;
             $ingreso->total = $request->total;

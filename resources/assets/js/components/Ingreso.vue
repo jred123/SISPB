@@ -98,7 +98,7 @@
                     <template v-else-if="listado==0">
                     <div class="card-body">
                         <div class="form-group row border">
-                            <div class="col-md-9">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Proveedor(*)</label>
                                     <v-select
@@ -111,6 +111,10 @@
                                         
                                     </v-select>
                                 </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Fecha Ingreso</label>
+                                <input type="date" class="form-control" v-model="fechai">
                             </div>
                             <div class="col-md-3">
                                 <label for="">Impuesto(*)</label>
@@ -653,6 +657,7 @@
                 idproveedor:0,
                 proveedor:'',
                 nombre : '',
+                fechai: '2019-01-01',
                 tipo_comprobante : 'BOLETA',
                 serie_comprobante : '',
                 num_comprobante : '',
@@ -1067,6 +1072,7 @@
 
                 axios.post('/ingreso/registrar',{
                     'idproveedor': this.idproveedor,
+                    'fechai' : this.fechai,
                     'tipo_comprobante': this.tipo_comprobante,
                     'serie_comprobante' : this.serie_comprobante,
                     'num_comprobante' : this.num_comprobante,
@@ -1082,6 +1088,7 @@
                     me.listado=1;
                     me.listarIngreso(1,'','num_comprobante');
                     me.idproveedor=0;
+                    me.fechai='2019-01-01';
                     me.tipo_comprobante='BOLETA';
                     me.serie_comprobante='';
                     me.num_comprobante='';
@@ -1118,6 +1125,7 @@
                     me.tipo_comprobante=arrayIngresoT[0]['tipo_comprobante'];
                     me.serie_comprobante=arrayIngresoT[0]['serie_comprobante'];
                     me.num_comprobante=arrayIngresoT[0]['num_comprobante'];
+                   // me.fechai=arrayIngresoT[0]['fechai'];
                     me.impuesto=arrayIngresoT[0]['impuesto'];
                     me.total=arrayIngresoT[0]['total'];
                     me.pago1=arrayIngresoT[0]['pago1'];
@@ -1169,6 +1177,7 @@
                 if (this.tipo_comprobante==0) this.errorMostrarMsjIngreso.push("Seleccione el Comprobante");
                 if (this.pago1==0) this.errorMostrarMsjIngreso.push("Ingrese al menos 1 pago");
                 if (!this.num_comprobante) this.errorMostrarMsjIngreso.push("Ingrese el numero de comprobante");
+               // if (!this.fechai) this.errorMostrarMsjIngreso.push("Ingrese la fecha de ingreso");
                 if (this.num_comprobante>9999999999) this.errorMostrarMsjIngreso.push("El numero de comprobante es mayor a lo almacenado");
                 if (!this.impuesto) this.errorMostrarMsjIngreso.push("Ingrese el impuesto de compra");
                 if (this.arrayDetalle.length<=0) this.errorMostrarMsjIngreso.push("Ingrese detalles");
